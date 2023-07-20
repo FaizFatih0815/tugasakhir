@@ -1,7 +1,7 @@
 <!-- Footer -->
-<footer class="sticky-footer bg-gray-900">
+<footer class="sticky-footer" style="background:#222831">
     <div class="container my-auto">
-        <div class="copyright text-center my-auto bg-gray-900">
+        <div class="copyright text-center my-auto">
             <span>Copyright &copy; Tugas Akhir Muhammad Faiz Alfatih 2023</span>
         </div>
     </div>

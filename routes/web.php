@@ -17,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // });
 
-Route::get('/', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('register');
+Route::get('/magnitude', [App\Http\Controllers\MagnitudeController::class, 'magnitude'])->name('magnitude');
+Route::get('/frequency', [App\Http\Controllers\FrequencyController::class, 'frequency'])->name('frequency');
+Route::get('/analytic', [App\Http\Controllers\AnalyticController::class, 'analytic'])->name('analytic');
+Route::get('/forgotpassword', [App\Http\Controllers\ForgotPasswordController::class, 'forgotpassword'])->name('forgotpassword');

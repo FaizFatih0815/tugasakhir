@@ -22,66 +22,60 @@
 
 </head>
 
-<body class="bg-gray-900">
+<body style="background:#222831">
 
     <div class="container">
-    
 
-                <div class="row text-center mb-5 justify-content-center" style="margin-top: 12%"> 
-                    <div class="col-lg-7">
-                        <div class="text-center p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-100 mb-4">Create an Account!</h1>
-                                    </div>
-                                    <form class="user">
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                                    placeholder="First Name">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                                    placeholder="Last Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                                placeholder="Email Address">
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user"
-                                                    id="exampleInputPassword" placeholder="Password">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <input type="password" class="form-control form-control-user"
-                                                    id="exampleRepeatPassword" placeholder="Repeat Password">
-                                            </div>
-                                        </div>
-                                        <a href="{{ route('login') }}" class="btn btn-warning btn-user btn-block">
-                                            <span class="font-weight-bold text-gray-900">Register Account</span>
-                                        </a>
-                                        <hr>
-                                        {{-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Register with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                        </a> --}}
-                                    {{-- </form>
-                                    <hr> --}}
-                                    <div class="text-center">
-                                        <a class="text-gray-100 small" href="{{ route('forgotpassword') }}">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="text-gray-100 small" href="{{ route('login') }}">Already have an account? Login!</a>
-                                    </div>
-                                </div>
+
+        <div class="row text-center mb-5 justify-content-center" style="margin-top: 12%">
+            <div class="col-lg-7">
+                <div class="text-center p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-100 mb-4">Create an Account!</h1>
+                    </div>
+                    <form class="user">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="First Name">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                    placeholder="Last Name">
                             </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                placeholder="Email Address">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                                    placeholder="Password">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
+                                    placeholder="Repeat Password">
+                            </div>
+                        </div>
+                        <a href="{{ route('login') }}" class="btn btn-user btn-block" style="background:#FFD369">
+                            <span class="font-weight-bold" style="color:#222831">Register Account</span>
+                        </a>
+                        <hr>
+
+                        <div class="text-center">
+                            <a class="text-gray-100 small" href="{{ route('forgotpassword') }}">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="text-gray-100 small" href="{{ route('login') }}">Already have an account?
+                                Login!</a>
+                        </div>
                 </div>
-        
+            </div>
+        </div>
+    </div>
+    </div>
+
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -89,7 +83,7 @@
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{  asset('js/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>

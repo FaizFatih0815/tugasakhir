@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-gray-900">
+<body style="background:#222831">
 
     <div class="container">
 
@@ -30,46 +30,40 @@
         <div class="row justify-content-center" style="margin-top: 12%">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
-
-                {{-- <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0"> --}}
-                        <!-- Nested Row within Card Body -->
-
-                        <div class="row justify-content-center">
-                            {{-- <div class="col-lg-6 d-none d-lg-block bg-password-image"></div> --}}
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-100 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">Just enter your email address below
-                                            and we'll send you a link to reset your password!</p>
-                                    </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <a href="login.html" class="btn btn-warning btn-user btn-block">
-                                            <span class="font-weight-bold text-gray-900">Reset Password</span>
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="text-gray-100 small" href="register.html">Create an Account!</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="text-gray-100 small" href="login.html">Already have an account? Login!</a>
-                                    </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-100 mb-2">Forgot Your Password?</h1>
+                                <p class="mb-4">Just enter your email address below
+                                    and we'll send you a link to reset your password!</p>
+                            </div>
+                            <form class="user">
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                 </div>
+                                <a href="login.html" class="btn btn-user btn-block" style="background:#FFD369">
+                                    <span class="font-weight-bold" style="color:#222831">Reset Password</span>
+                                </a>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="text-gray-100 small" href="{{ route('login') }}">Already have an account?
+                                    Login!</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
+
+    </div>
+
+    </div>
 
     </div>
 

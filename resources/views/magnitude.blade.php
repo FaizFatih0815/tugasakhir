@@ -4,13 +4,13 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <div class="d-sm-flex align-items-center mb-4" style="margin-left:17%; margin-top:2%">
             <h1 class="font-weight-bold mb-0 text-gray-100">Magnitude</h1>
         </div>
 
         <!-- Content Column -->
-        <div class="row">
-            <div class="col-lg-6 mb-4 mt-1 mx-auto">
+        <div class="row" style="margin-left:0%">
+            <div class="col-lg-6 mb-4 mt-1">
 
                 <table class="table table-bordered">
 

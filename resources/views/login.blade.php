@@ -22,8 +22,8 @@
 
 </head>
 
-<body class="bg-gray-900">
-    
+<body style="background:#222831">
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
@@ -31,38 +31,39 @@
                     <h1 class="font-weight-bold mb-0 text-gray-100">WEBSITE MONITORING</h1>
                     <h1 class="font-weight-bold mb-0 text-gray-100">TUGAS AKHIR</h1>
 
-                    
-                            <div class="form-group" style="max-width: 100 px;">
-                                <input type="email" class="form-control form-control-user pl-3" style="margin-top: 3%; border-radius:2rem"
-                                    id="exampleInputEmail" aria-describedby="emailHelp"
-                                    placeholder="Enter Email Address...">
-                            </div>
-                
-                            <div class="form-group" style="max-width: 100 px;">
-                                <input type="password" class="form-control form-control-user pl-3" style="border-radius:2rem"
-                                    id="exampleInputPassword" placeholder="Password">
-                            </div>
-                        
 
+                    <div class="form-group" style="max-width: 100 px;">
+                        <input type="email" class="form-control form-control-user pl-3"
+                            style="margin-top: 3%; border-radius:2rem" id="exampleInputEmail"
+                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                    </div>
+
+                    <div class="form-group" style="max-width: 100 px;">
+                        <input type="password" class="form-control form-control-user pl-3" style="border-radius:2rem"
+                            id="exampleInputPassword" placeholder="Password">
+                    </div>
                 </div>
-                <a href="{{ route('dashboard') }}" class="btn btn-warning btn-user btn-block" style="border-radius:2rem">
-                    <span class="font-weight-bold text-gray-900">Login</span>
+
+                <a href="{{ route('dashboard') }}" class="btn btn-user btn-block"
+                    style="border-radius:2rem; background:#FFD369">
+                    <span class="font-weight-bold" style="color:#222831">Login</span>
                 </a>
 
-                    <hr>
+                <hr>
+
                 <div class="text-center">
-                <a class="text-gray-100 small" href="{{  route('forgotpassword') }}">Forgot Password?</a>
+                    <a class="text-gray-100 small" href="{{ route('forgotpassword') }}">Forgot Password?</a>
                 </div>
+
                 <div class="text-center">
-                <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
+                    <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
                 </div>
 
             </div>
 
         </div>
     </div>
-</div>
-    </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>

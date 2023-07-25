@@ -31,12 +31,14 @@
 
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="row justify-content-center">
+
                     <div class="col-lg-6">
-                        <div class="p-5">
+                        <div class="p-5" style="background:#1B2028; border-radius:25px">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-100 mb-2">Forgot Your Password?</h1>
-                                <p class="mb-4">Just enter your email address below
-                                    and we'll send you a link to reset your password!</p>
+                                <p class="mb-3">Masukkan email anda dibawah, kemudian kami akan mengirim kamu link
+                                    untuk mereset password anda!
+                                </p>
                             </div>
                             <form class="user">
                                 <div class="form-group">

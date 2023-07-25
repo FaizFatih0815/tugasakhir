@@ -3,58 +3,93 @@
 @section('content')
     <div class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center mb-4" style="margin-left:17%; margin-top:2%">
-            <h1 class="font-weight-bold mb-0 text-gray-100">Magnitude</h1>
-        </div>
+        <div class="row">
 
-        <!-- Content Column -->
-        <div class="row" style="margin-left:0%">
-            <div class="col-lg-6 mb-4 mt-1">
+            <!-- Page Heading -->
+            <div class="col-6 text-center">
+                <div style="margin-bottom:20px">
+                    <h1 class="font-weight-bold mb-0 text-gray-100">Magnitude</h1>
+                </div>
 
-                <table class="table table-bordered">
+                <!-- Content Column -->
+                <div class="row" style="margin-left:0%">
 
+                    <div class="col-lg-12 mb-4 mt-1">
 
-                    <thead>
-                        <tr>
-                            <th class="text-gray-100" scope="col">Date/Time</th>
-                            <th class="text-gray-100" scope="col">Magnitude</th>
-                        </tr>
-                    </thead>
+                        <div class="table-responsive card mb-3" style="background: #222831">
+                            <table class="table table-bordered mb-0">
 
-                    <tbody>
-                        <tr>
-                            <th class="text-gray-100" scope="row">13.7.2023 09.00</th>
-                            <td class="text-gray-100">10 V</td>
-                        </tr>
-                        <tr>
-                            <th class="text-gray-100" scope="row">13.7.2023 09.10</th>
-                            <td class="text-gray-100">10 V</td>
-                        </tr>
+                                <thead>
+                                    <tr>
+                                        <th class="text-gray-100" scope="col">Date/Time</th>
+                                        <th class="text-gray-100" scope="col">Magnitude</th>
+                                    </tr>
+                                </thead>
 
-                        <tr>
-                            <th class="text-gray-100" scope="row">13.7.2023 09.20</th>
-                            <td class="text-gray-100">10 V</td>
-                        </tr>
+                                <tbody>
+                                    @foreach ($paginatedResults as $res)
+                                        <tr>
+                                            <th class="text-gray-100" scope="row">{{ $res['time'] }}</th>
+                                            <td class="text-gray-100">{{ $res['value'] }} V</td>
+                                        </tr>
+                                    @endforeach
+                                    {{-- <tr>
+                                    <th class="text-gray-100" scope="row">13.7.2023 09.00</th>
+                                    <td class="text-gray-100">10 V</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-gray-100" scope="row">13.7.2023 09.10</th>
+                                    <td class="text-gray-100">10 V</td>
+                                </tr>
 
-                        <tr>
-                            <th class="text-gray-100" scope="row">13.7.2023 09.30</th>
-                            <td class="text-gray-100">10 V</td>
-                        </tr>
+                                <tr>
+                                    <th class="text-gray-100" scope="row">13.7.2023 09.20</th>
+                                    <td class="text-gray-100">10 V</td>
+                                </tr>
 
-                        <tr>
-                            <th class="text-gray-100" scope="row">13.7.2023 09.40</th>
-                            <td class="text-gray-100">10 V</td>
-                        </tr>
+                                <tr>
+                                    <th class="text-gray-100" scope="row">13.7.2023 09.30</th>
+                                    <td class="text-gray-100">10 V</td>
+                                </tr>
 
-                        <tr>
-                            <th class="text-gray-100" scope="row">13.7.2023 09.50</th>
-                            <td class="text-gray-100">10 V</td>
-                        </tr>
+                                <tr>
+                                    <th class="text-gray-100" scope="row">13.7.2023 09.40</th>
+                                    <td class="text-gray-100">10 V</td>
+                                </tr>
 
-                    </tbody>
-                </table>
+                                <tr>
+                                    <th class="text-gray-100" scope="row">13.7.2023 09.50</th>
+                                    <td class="text-gray-100">10 V</td>
+                                </tr> --}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                        {{ $paginatedResults->links('pagination::custom') }}
+                    </div>
+                </div>
             </div>
+
+            <div class="col-6 px-4" style="margin-top: 65px; color:#EEEEEE; text-align:justify">
+                <p style="font-size:24px"> Data tersebut adalah data dari <b style="color:#FFD369">Nilai Magnitude</b> yang
+                    masuk
+                    kedalam
+                    sistem tiap jam
+                    selama satu hari.
+                    Untuk rata-rata nilai magnitude hingga saat ini adalah <b style="color:#FFD369">160V</b>.
+                </p>
+
+                <p style="font-size:24px">Silahkan klik button di bawah untuk mendownload data pada tabel di samping.
+                </p>
+
+                <div class="col-sm-4 mb-1 px-0 mb-sm-0" style="margin-top:0px">
+                    <a href="{{ route('magnitude.export') }}" class="btn btn-user btn-block" style="background:#151A21">
+                        <span class="font-weight-bold" style="color:#FFFFFF">Download</span>
+                    </a>
+                </div>
+
+            </div>
+
         </div>
     </div>
 @stop

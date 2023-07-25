@@ -17,37 +17,55 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+    <link
+        href='https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i'
+        rel='stylesheet'>
+
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <style>
+        body {
+            font-family: 'Montserrat' !important;
+        }
+    </style>
 </head>
 
 <body style="background:#222831">
 
     <div class="container">
-        <div class="row justify-content-center">
+
+
+        <div class="row justify-content-center align-items-center">
+
             <div class="col-8">
-                <div class="text-center mb-3" style="margin-top: 25%">
-                    <h1 class="font-weight-bold mb-0 text-gray-100">WEBSITE MONITORING</h1>
-                    <h1 class="font-weight-bold mb-0 text-gray-100">TUGAS AKHIR</h1>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div
+                        style="margin-left:10%; margin-right:10%; border-radius:10%; margin-top:15px; background:#FFD369">
+                        <div class="text-center mb-3" style="margin-top: 12%">
+                            <img src="{{ asset('img/LogoUndip.png') }}" width="200" height="200">
+                            <h1 class="font-weight-bold mb-0 text-gray-100">WEBSITE MONITORING</h1>
+                            <h1 class="font-weight-bold mb-0 text-gray-100">TUGAS AKHIR</h1>
 
 
-                    <div class="form-group" style="max-width: 100 px;">
-                        <input type="email" class="form-control form-control-user pl-3"
-                            style="margin-top: 3%; border-radius:2rem" id="exampleInputEmail"
-                            aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                            <div class="form-group" style="max-width: 100 px;">
+                                <input type="email" class="form-control form-control-user pl-3"
+                                    style="margin-top: 3%; border-radius:2rem" id="exampleInputEmail"
+                                    aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                            </div>
+
+                            <div class="form-group" style="max-width: 100 px;">
+                                <input type="password" class="form-control form-control-user pl-3"
+                                    style="border-radius:2rem" id="exampleInputPassword" placeholder="Password">
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group" style="max-width: 100 px;">
-                        <input type="password" class="form-control form-control-user pl-3" style="border-radius:2rem"
-                            id="exampleInputPassword" placeholder="Password">
-                    </div>
-                </div>
-
-                <a href="{{ route('dashboard') }}" class="btn btn-user btn-block"
-                    style="border-radius:2rem; background:#FFD369">
-                    <span class="font-weight-bold" style="color:#222831">Login</span>
-                </a>
+                    <button class="btn btn-user btn-block" style="border-radius:2rem; background:#FFD369">
+                        <span class="font-weight-bold" style="color:#222831">Login</span>
+                    </button>
+                </form>
 
                 <hr>
 

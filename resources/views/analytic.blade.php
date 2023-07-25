@@ -27,7 +27,7 @@
             <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frequency</h6>
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frekuensi</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -40,16 +40,11 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="js/jquery/jquery.min.js"></script>
-    <script src="js/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="js/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
 
+@stop
+@section('customscript')
     <!-- Page level plugins -->
     <script src="js/chart.js/Chart.min.js"></script>
 
@@ -96,7 +91,7 @@
             data: {
                 labels: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
                 datasets: [{
-                    label: "Earnings",
+                    label: "Magnitude",
                     lineTension: 0.3,
                     backgroundColor: "rgba(46, 52, 21, 0.05)",
                     borderColor: "rgba(46, 52, 21, 1)",
@@ -108,7 +103,7 @@
                     pointHoverBorderColor: "rgba(78, 115, 223, 1)",
                     pointHitRadius: 10,
                     pointBorderWidth: 2,
-                    data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+                    data: [0, 50, 100, 150, 200, 250, 300],
                 }],
             },
             options: {
@@ -138,10 +133,6 @@
                         ticks: {
                             maxTicksLimit: 5,
                             padding: 10,
-                            // Include a dollar sign in the ticks
-                            callback: function(value, index, values) {
-                                return '$' + number_format(value);
-                            }
                         },
                         gridLines: {
                             color: "rgb(234, 236, 244)",
@@ -172,7 +163,7 @@
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' V';
                         }
                     }
                 }
@@ -186,7 +177,7 @@
             data: {
                 labels: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
                 datasets: [{
-                    label: "Earnings",
+                    label: "Frekuensi",
                     lineTension: 0.3,
                     backgroundColor: "rgba(46, 52, 21, 0.05)",
                     borderColor: "rgba(46, 52, 21, 1)",
@@ -198,7 +189,7 @@
                     pointHoverBorderColor: "rgba(78, 115, 223, 1)",
                     pointHitRadius: 10,
                     pointBorderWidth: 2,
-                    data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+                    data: [0, 10, 20, 30, 40, 50, 60],
                 }],
             },
             options: {
@@ -228,10 +219,7 @@
                         ticks: {
                             maxTicksLimit: 5,
                             padding: 10,
-                            // Include a dollar sign in the ticks
-                            callback: function(value, index, values) {
-                                return '$' + number_format(value);
-                            }
+
                         },
                         gridLines: {
                             color: "rgb(234, 236, 244)",
@@ -262,13 +250,11 @@
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' Hz';
                         }
                     }
                 }
             }
         });
     </script>
-
-
 @stop

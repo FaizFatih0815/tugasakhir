@@ -11,7 +11,7 @@
                         <div class="sidebar-brand-text mx-0">Monitoring</div>
                     </div>
                     <div>
-                        <div class="fsidebar-brand-text mx-0" style="font-size:10px">Tugas Akhir</div>
+                        <div class="fsidebar-brand-text mx-0" style="font-size:10px">ATS System</div>
                     </div>
                 </div>
             </a>

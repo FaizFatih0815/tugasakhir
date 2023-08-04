@@ -38,4 +38,6 @@ Route::post('/admin/{id}/deleteuser', [App\Http\Controllers\AdminController::cla
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    return redirect()->route('login');
+});

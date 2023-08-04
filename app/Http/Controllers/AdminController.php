@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -50,7 +51,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambah');
     }

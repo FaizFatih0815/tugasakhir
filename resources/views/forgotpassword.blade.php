@@ -9,6 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
+
     <title>Monitoring - Forgot Password</title>
 
     <!-- Custom fonts for this template-->
@@ -18,7 +23,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -40,19 +45,27 @@
                                     untuk mereset password anda!
                                 </p>
                             </div>
-                            <form class="user">
+                            <form method="POST" action="{{ route('password.email') }}">
+                                @csrf
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" name="email" style="border-radius:25px"
+                                        class="form-control form-control-user" id="exampleInputEmail"
                                         aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                 </div>
-                                <a href="login.html" class="btn btn-user btn-block" style="background:#FFD369">
+                                <button type="submit" class="btn btn-user btn-block"
+                                    style="background:#FFD369; border-radius:25px">
                                     <span class="font-weight-bold" style="color:#222831">Reset Password</span>
-                                </a>
+                                </button>
                             </form>
                             <hr>
-                            <div class="text-center">
+                            {{-- <div class="text-center">
                                 <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
-                            </div>
+                            </div> --}}
                             <div class="text-center">
                                 <a class="text-gray-100 small" href="{{ route('login') }}">Already have an account?
                                     Login!</a>

@@ -51,7 +51,10 @@ class FrequencyController extends Controller
 
         // dd($paginatedResults);
 
-        return view('frequency', compact('paginatedResults'));
+        $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('frequency');
+        $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('frequency');
+
+        return view('frequency', compact('paginatedResults', 'maximum', 'minimum'));
     }
 
     public function export()

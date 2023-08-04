@@ -31,6 +31,9 @@ Route::get('/forgotpassword', [App\Http\Controllers\ForgotPasswordController::cl
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');
 Route::post('/updateprofile', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
+Route::post('/admin/{id}/updateuser', [App\Http\Controllers\AdminController::class, 'updateuser'])->name('admin.updateuser');
+Route::post('/admin/add/user', [App\Http\Controllers\AdminController::class, 'adduser'])->name('admin.adduser');
+Route::post('/admin/{id}/deleteuser', [App\Http\Controllers\AdminController::class, 'deleteuser'])->name('admin.deleteuser');
 
 
 Auth::routes();

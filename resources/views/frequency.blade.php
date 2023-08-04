@@ -34,35 +34,6 @@
                                         </tr>
                                     @endforeach
 
-                                    {{-- <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.00</th>
-                                    <td class="text-gray-100">10 Hz</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.10</th>
-                                    <td class="text-gray-100">10 Hz</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.20</th>
-                                    <td class="text-gray-100">10 Hz</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.30</th>
-                                    <td class="text-gray-100">10 Hz</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.40</th>
-                                    <td class="text-gray-100">10 Hz</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.50</th>
-                                    <td class="text-gray-100">10 hz</td>
-                                </tr> --}}
-
                                 </tbody>
                             </table>
                         </div>
@@ -74,10 +45,10 @@
 
             <div class="col-6 px-4" style="margin-top: 65px; color:#EEEEEE; text-align:justify">
                 <p style="font-size:24px"> Data tersebut adalah data dari <b style="color:#FFD369">Nilai Frekuensi</b> yang
-                    masuk
-                    kedalam sistem tiap jam
-                    selama satu hari.
-                    Untuk rata-rata nilai frekuensi hingga saat ini adalah <b style="color:#FFD369">10Hz</b>.
+                    masuk kedalam sistem tiap jam selama satu hari.
+                    Untuk nilai frekuensi tertinggi yang masuk hingga saat ini senilai <b
+                        style="color:#FFD369">{{ $maximum }} Hz</b>, dan nilai frekuensi terendahnya senilai <b
+                        style="color:#FFD369">{{ $minimum }} Hz</b>.
                 </p>
 
                 <p style="font-size:24px">Silahkan klik button di bawah untuk mendownload data pada tabel di samping.

@@ -84,27 +84,52 @@
             return s.join(dec);
         }
 
+        var labels = @json($labels);
+        var max_magnitude = @json($max_magnitude);
+        var min_magnitude = @json($min_magnitude);
+        var max_frequency = @json($max_frequency);
+        var min_frequency = @json($min_frequency);
         // Area Chart Example
         var ctx = document.getElementById("ChartMagnitude");
         var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
+                labels: labels,
                 datasets: [{
-                    label: "Magnitude",
-                    lineTension: 0.3,
-                    backgroundColor: "rgba(46, 52, 21, 0.05)",
-                    borderColor: "rgba(46, 52, 21, 1)",
-                    pointRadius: 3,
-                    pointBackgroundColor: "rgba(46, 52, 21, 1)",
-                    pointBorderColor: "rgba(46, 52, 21, 1)",
-                    pointHoverRadius: 3,
-                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-                    pointHitRadius: 10,
-                    pointBorderWidth: 2,
-                    data: [0, 50, 100, 150, 200, 250, 300],
-                }],
+                        label: "Nilai Magnitude Maximal",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(46, 52, 21, 0.05)",
+                        fill: false,
+                        borderColor: "rgba(30, 40, 49, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(30, 40, 49, 1)",
+                        pointBorderColor: "rgba(30, 40, 49, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
+                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: max_magnitude,
+                    },
+                    {
+                        label: "Nilai Magnitude Minimal",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(30, 40, 49, 0.05)",
+                        fill: false,
+                        borderColor: "rgba(87, 91, 96, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(87, 91, 96, 1)",
+                        pointBorderColor: "rgba(87, 91, 96, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
+                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: min_magnitude,
+
+                    }
+
+                ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -126,13 +151,17 @@
                             drawBorder: false
                         },
                         ticks: {
-                            maxTicksLimit: 7
+                            maxTicksLimit: 7,
+                            maxRotation: 45,
+                            minRotation: 45,
                         }
                     }],
                     yAxes: [{
                         ticks: {
                             maxTicksLimit: 5,
                             padding: 10,
+                            maxRotation: 45,
+                            minRotation: 45,
                         },
                         gridLines: {
                             color: "rgb(234, 236, 244)",
@@ -144,7 +173,11 @@
                     }],
                 },
                 legend: {
-                    display: false
+                    display: true,
+                    position: 'bottom',
+                    lables: {
+                        fontColor: 'rgb(255, 99, 132)'
+                    }
                 },
                 tooltips: {
                     backgroundColor: "rgb(255,255,255)",
@@ -175,22 +208,41 @@
         var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"],
+                labels: labels,
                 datasets: [{
-                    label: "Frekuensi",
-                    lineTension: 0.3,
-                    backgroundColor: "rgba(46, 52, 21, 0.05)",
-                    borderColor: "rgba(46, 52, 21, 1)",
-                    pointRadius: 3,
-                    pointBackgroundColor: "rgba(46, 52, 21, 1)",
-                    pointBorderColor: "rgba(46, 52, 21, 1)",
-                    pointHoverRadius: 3,
-                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-                    pointHitRadius: 10,
-                    pointBorderWidth: 2,
-                    data: [0, 10, 20, 30, 40, 50, 60],
-                }],
+                        label: "Nilai Frekuensi Maksimal",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(46, 52, 21, 0.05)",
+                        fill: false,
+                        borderColor: "rgba(30, 40, 49, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(30, 40, 49, 1)",
+                        pointBorderColor: "rgba(30, 40, 49, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
+                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: max_frequency,
+                    },
+                    {
+                        label: "Nilai Frekuensi Minimal",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(46, 52, 21, 0.05)",
+                        fill: false,
+                        borderColor: "rgba(87, 91, 96, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(87, 91, 96, 1)",
+                        pointBorderColor: "rgba(87, 91, 96, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
+                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: min_frequency,
+                    }
+
+                ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -212,13 +264,25 @@
                             drawBorder: false
                         },
                         ticks: {
-                            maxTicksLimit: 7
-                        }
+                            maxTicksLimit: 7,
+                            maxRotation: 45,
+                            minRotation: 45,
+                        },
+                        left: 100,
+                        right: 100,
+                        // grid: {
+                        //     padding: {
+                        //         left: 50,
+                        //         right: 50,
+                        //     }
+                        // }
                     }],
                     yAxes: [{
                         ticks: {
                             maxTicksLimit: 5,
                             padding: 10,
+                            maxRotation: 45,
+                            minRotation: 45,
 
                         },
                         gridLines: {
@@ -231,7 +295,11 @@
                     }],
                 },
                 legend: {
-                    display: false
+                    display: true,
+                    position: 'bottom',
+                    lables: {
+                        fontColor: 'rgb(255, 99, 132)'
+                    }
                 },
                 tooltips: {
                     backgroundColor: "rgb(255,255,255)",

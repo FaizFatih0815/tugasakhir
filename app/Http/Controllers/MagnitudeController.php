@@ -51,7 +51,10 @@ class MagnitudeController extends Controller
 
         // dd($paginatedResults);
 
-        return view('magnitude', compact('paginatedResults'));
+        $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('magnitude');
+        $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('magnitude');
+
+        return view('magnitude', compact('paginatedResults', 'maximum', 'minimum'));
     }
 
     public function export()

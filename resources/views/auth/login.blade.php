@@ -9,6 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
+
     <title>Monitoring - Login</title>
 
     <!-- Custom fonts for this template-->
@@ -82,9 +87,9 @@
                         <a class="text-gray-100 small" href="{{ route('forgotpassword') }}">Forgot Password?</a>
                     </div>
 
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

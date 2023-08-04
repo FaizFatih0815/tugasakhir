@@ -33,34 +33,6 @@
                                             <td class="text-gray-100">{{ $res['value'] }} V</td>
                                         </tr>
                                     @endforeach
-                                    {{-- <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.00</th>
-                                    <td class="text-gray-100">10 V</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.10</th>
-                                    <td class="text-gray-100">10 V</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.20</th>
-                                    <td class="text-gray-100">10 V</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.30</th>
-                                    <td class="text-gray-100">10 V</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.40</th>
-                                    <td class="text-gray-100">10 V</td>
-                                </tr>
-
-                                <tr>
-                                    <th class="text-gray-100" scope="row">13.7.2023 09.50</th>
-                                    <td class="text-gray-100">10 V</td>
-                                </tr> --}}
 
                                 </tbody>
                             </table>
@@ -72,11 +44,10 @@
 
             <div class="col-6 px-4" style="margin-top: 65px; color:#EEEEEE; text-align:justify">
                 <p style="font-size:24px"> Data tersebut adalah data dari <b style="color:#FFD369">Nilai Magnitude</b> yang
-                    masuk
-                    kedalam
-                    sistem tiap jam
-                    selama satu hari.
-                    Untuk rata-rata nilai magnitude hingga saat ini adalah <b style="color:#FFD369">160V</b>.
+                    masuk kedalam sistem tiap jam selama satu hari.
+                    Untuk nilai magnitude tertinggi yang masuk hingga saat ini senilai <b
+                        style="color:#FFD369">{{ $maximum }} V</b>, dan nilai magnitude terendahnya senilai <b
+                        style="color:#FFD369">{{ $minimum }} V</b>.
                 </p>
 
                 <p style="font-size:24px">Silahkan klik button di bawah untuk mendownload data pada tabel di samping.

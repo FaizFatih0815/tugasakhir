@@ -57,6 +57,29 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-100 mb-3" style="font-weight:800">Edit Profile</h1>
                                 </div>
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ $message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <h6>Error</h6>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                @endif
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" name="name" class="form-control form-control-user"
@@ -109,8 +132,8 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         /*  ==========================================
-                                                                                                                                                                                                                                                                            SHOW UPLOADED IMAGE
-                                                                                                                                                                                                                                                                            * ========================================== */
+                                                                                                                                                                                                                                                                                    SHOW UPLOADED IMAGE
+                                                                                                                                                                                                                                                                                    * ========================================== */
         function readURL(input, info, result) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -125,6 +148,14 @@
                 $("#" + info).text('Filename: ' + fileName);
             }
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".alert").fadeTo(2000, 500).slideUp(500, function() {
+                $(".alert").slideUp(500);
+            });
+        })
     </script>
 
 </body>

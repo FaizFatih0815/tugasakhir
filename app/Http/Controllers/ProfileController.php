@@ -16,6 +16,13 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email'
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'email.required' => 'Email harus diisi'
+        ]);
         try {
             $profile = User::find(auth()->user()->id);
             if ($profile) {

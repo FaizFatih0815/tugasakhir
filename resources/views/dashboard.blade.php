@@ -25,10 +25,10 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-S text-gray-800 text-uppercase mb-1"
+                                    <div class="text-S text-gray-900 text-uppercase mb-1"
                                         style="font-weight:800 !important">
                                         Magnitude</div>
-                                    <div class="h5 mb-0 text-gray-800" style="font-weight:600 !important">
+                                    <div class="h5 mb-0 text-gray-900" style="font-weight:600 !important">
                                         {{ $magnitude }} V</div>
                                 </div>
                                 <div class="col-auto">
@@ -42,10 +42,10 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-s text-gray-800 text-uppercase mb-1"
+                                    <div class="text-s text-gray-900 text-uppercase mb-1"
                                         style="font-weight:800 !important">
                                         Frequency</div>
-                                    <div class="h5 mb-0 text-gray-800" style="font-weight:600 !important">
+                                    <div class="h5 mb-0 text-gray-900" style="font-weight:600 !important">
                                         {{ $frequency }} Hz</div>
                                 </div>
                                 <div class="col-auto">
@@ -54,34 +54,32 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="card shadow h-100 py-4" style="border-left:11px solid #FCC23F; background-color:#FFD369">
+                    {{-- #455847 #AACB73 --}}
+                    <div class="card shadow h-100 py-4"
+                        style="border-left:11px solid @if ($magnitude >= 150) #455847 @else #ae0000 @endif; background-color:@if ($magnitude >= 150) #AACB73  @else #D71313 @endif">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-s text-gray-800 text-uppercase mb-1"
-                                        style="font-weight:800 !important">
+                                    <div class="text-s text-uppercase mb-1"
+                                        style="font-weight:800 !important; color: @if ($magnitude >= 150) #455847 @else #ffffff @endif">
                                         STATUS</div>
-                                    <div class="h5 mb-0 text-gray-800" style="font-weight:600 !important">Aman</div>
+                                    <div class="h5 mb-0"
+                                        style="font-weight:600 !important; color: @if ($magnitude >= 150) #455847 @else #ffffff @endif">
+                                        @if ($magnitude >= 150)
+                                            Aman
+                                        @else
+                                            Tidak Aman
+                                        @endif
+                                    </div>
+
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-solid fa-check fa-2x" style="color:#fdbf2e"></i>
+                                    <i class="fas fa-solid fa-check fa-2x"
+                                        style="color:@if ($magnitude >= 150) #9EBC64  @else #ae0000 @endif"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div style="margin-left:0%">
-                                <div class="col-xl-4 col-md-6 col-sm-12 mb-4" style="margin-left:auto; margin-right:3%">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <img src="{{ asset('img/DashboardPhoto.png') }}" width="300" height="400">
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                            </div> --}}
 
                     <!-- End of Content Wrapper -->
                 </div>

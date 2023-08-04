@@ -51,5 +51,16 @@
                 </a>
             </li>
 
+            <!-- Nav Item - Pages Collapse Menu -->
+            @if (auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{ route('admin') }}">
+                        <i class="fas fa-solid fa-bookmark" style="color:#EEEEEE; font-size:15px"></i>
+                        <span style="color:#EEEEEE; font-size:15px">User</span>
+                    </a>
+                </li>
+            @endif
+
+
         </ul>
         <!-- End of Sidebar -->

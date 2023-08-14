@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class FrequencyController extends Controller
 {
-    public function frequency()
+    public function frekuensi()
     {
         $currentDate = Carbon::today();
 
@@ -30,7 +30,7 @@ class FrequencyController extends Controller
             // If there are records for the current hour, add them to the results array
             $results->push([
                 'time' => $hourCarbon->format('d F Y H:i'),
-                'value' => $records->frequency ?? 0,
+                'value' => $records->frekuensi ?? 0,
             ]);
 
             // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
@@ -51,10 +51,10 @@ class FrequencyController extends Controller
 
         // dd($paginatedResults);
 
-        $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('frequency');
-        $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('frequency');
+        $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('frekuensi');
+        $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('frekuensi');
 
-        return view('frequency', compact('paginatedResults', 'maximum', 'minimum'));
+        return view('frekuensi', compact('paginatedResults', 'maximum', 'minimum'));
     }
 
     public function export()

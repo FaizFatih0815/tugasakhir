@@ -23,8 +23,8 @@ class AnalyticController extends Controller
         }
         $max_magnitude = [];
         $min_magnitude = [];
-        $max_frequency = [];
-        $min_frequency = [];
+        $max_frekuensi = [];
+        $min_frekuensi = [];
 
         foreach ($dates as $date) {
             $startDate = Carbon::createFromFormat('d/m/Y', $date)->startOfDay();
@@ -32,8 +32,8 @@ class AnalyticController extends Controller
 
             $max_magnitude[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->max('magnitude');
             $min_magnitude[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('magnitude');
-            $max_frequency[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->max('frequency');
-            $min_frequency[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('frequency');
+            $max_frekuensi[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->max('frekuensi');
+            $min_frekuensi[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('frekuensi');
         }
         // dd($dates);
 
@@ -41,10 +41,10 @@ class AnalyticController extends Controller
         $labels = array_reverse($labels);
         $max_magnitude = array_reverse($max_magnitude);
         $min_magnitude = array_reverse($min_magnitude);
-        $max_frequency = array_reverse($max_frequency);
-        $min_frequency = array_reverse($min_frequency);
+        $max_frekuensi = array_reverse($max_frekuensi);
+        $min_frekuensi = array_reverse($min_frekuensi);
 
 
-        return view('analytic', compact('labels', 'dates', 'max_magnitude', 'min_magnitude', 'max_frequency', 'min_frequency'));
+        return view('analytic', compact('labels', 'dates', 'max_magnitude', 'min_magnitude', 'max_frekuensi', 'min_frekuensi'));
     }
 }

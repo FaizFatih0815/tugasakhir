@@ -87,8 +87,8 @@
         var labels = @json($labels);
         var max_magnitude = @json($max_magnitude);
         var min_magnitude = @json($min_magnitude);
-        var max_frequency = @json($max_frequency);
-        var min_frequency = @json($min_frequency);
+        var max_frekuensi = @json($max_frekuensi);
+        var min_frekuensi = @json($min_frekuensi);
         // Area Chart Example
         var ctx = document.getElementById("ChartMagnitude");
         var myLineChart = new Chart(ctx, {

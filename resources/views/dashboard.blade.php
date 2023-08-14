@@ -46,7 +46,7 @@
                                         style="font-weight:800 !important">
                                         Frequency</div>
                                     <div class="h5 mb-0 text-gray-900" style="font-weight:600 !important">
-                                        {{ $frequency }} Hz</div>
+                                        {{ $frekuensi }} Hz</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-solid fa-wave-square fa-2x text-gray-400"></i>

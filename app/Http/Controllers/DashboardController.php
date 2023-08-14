@@ -11,8 +11,8 @@ class DashboardController extends Controller
     {
         $datas = Monitoring::all();
         $magnitude = Monitoring::orderBy('created_at', 'desc')->first()->magnitude;
-        $frequency = Monitoring::orderBy('created_at', 'desc')->first()->frequency;
+        $frekuensi = Monitoring::orderBy('created_at', 'desc')->first()->frekuensi;
         // dd($frequency);
-        return view('dashboard', compact('magnitude', 'frequency'));
+        return view('dashboard', compact('magnitude', 'frekuensi'));
     }
 }

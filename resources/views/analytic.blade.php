@@ -223,7 +223,7 @@
                         pointHoverBorderColor: "rgba(244, 209, 96, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        data: max_frequency,
+                        data: max_frekuensi,
                     },
                     {
                         label: "Nilai Frekuensi Minimal",
@@ -239,7 +239,7 @@
                         pointHoverBorderColor: "rgba(244, 209, 96, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        data: min_frequency,
+                        data: min_frekuensi,
                     }
 
                 ],

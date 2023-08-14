@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class FrequencyController extends Controller
 {
-    public function frekuensi()
+    public function frequency()
     {
         $currentDate = Carbon::today();
 
@@ -54,7 +54,7 @@ class FrequencyController extends Controller
         $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('frekuensi');
         $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('frekuensi');
 
-        return view('frekuensi', compact('paginatedResults', 'maximum', 'minimum'));
+        return view('frequency', compact('paginatedResults', 'maximum', 'minimum'));
     }
 
     public function export()

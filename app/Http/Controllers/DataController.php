@@ -10,13 +10,13 @@ class DataController extends Controller
     public function insertData(Request $request)
     {
         // Retrieve input data
-        $frequency = $request->input('frequency');
+        $frekuensi = $request->input('frekuensi');
         $magnitude = $request->input('magnitude');
 
         try {
             // Insert data into the 'monitorings' table
             DB::table('monitorings')->insert([
-                'frequency' => $frequency,
+                'frekuensi' => $frekuensi,
                 'magnitude' => $magnitude,
             ]);
 

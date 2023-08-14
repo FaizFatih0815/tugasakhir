@@ -52,6 +52,17 @@
                                         {{ session('status') }}
                                     </div>
                                 @endif
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul class="mb-0">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }} </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
                                     <input type="email" name="email" style="border-radius:25px"
                                         class="form-control form-control-user" id="exampleInputEmail"

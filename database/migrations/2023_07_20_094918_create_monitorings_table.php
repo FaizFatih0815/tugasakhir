@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('monitorings', function (Blueprint $table) {
             $table->id();
             $table->float('magnitude');
-            $table->integer('frequency');
+            $table->integer('frekuensi');
             $table->timestamps();
         });
     }

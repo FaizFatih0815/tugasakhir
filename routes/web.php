@@ -35,9 +35,11 @@ Route::post('/admin/{id}/updateuser', [App\Http\Controllers\AdminController::cla
 Route::post('/admin/add/user', [App\Http\Controllers\AdminController::class, 'adduser'])->name('admin.adduser');
 Route::post('/admin/{id}/deleteuser', [App\Http\Controllers\AdminController::class, 'deleteuser'])->name('admin.deleteuser');
 
-
 Auth::routes();
 
 Route::get('/home', function () {
     return redirect()->route('login');
 });
+
+
+Route::post('/insert-data', 'App\Http\Controllers\DataController@insertData');

@@ -18,24 +18,55 @@ class MagnitudeController extends Controller
         $results = collect();
 
         // Loop through each hour from 00:00 to 23:00
-        for ($hour = 0; $hour < 24; $hour++) {
-            // Set the specific hour and minute for the current iteration
-            $hourCarbon = $currentDate->copy()->setTime($hour, 0, 0);
+        // for ($hour = 0; $hour < 24; $hour++) {
+        //     // Set the specific hour and minute for the current iteration
+        //     $hourCarbon = $currentDate->copy()->setTime($hour, 0, 0);
 
-            // Get the records for the current hour
-            $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
-                ->orderBy('created_at', 'desc')
-                ->first();
+        //     // Get the records for the current hour
+        //     $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
+        //         ->orderBy('created_at', 'desc')
+        //         ->first();
 
-            // If there are records for the current hour, add them to the results array
-            $results->push([
-                'time' => $hourCarbon->format('d F Y H:i'),
-                'value' => $records->magnitude ?? 0,
-            ]);
-
-            // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
-            // $results[$hour]['value'] = $records->magnitude;
+        //     // If there are records for the current hour, add them to the results array
+        //     $results->push([
+        //         'time' => $hourCarbon->format('d F Y H:i'),
+        //         'value' => $records->magnitude ?? 0,
+        //     ]);
+        foreach ($results as $record) {
+            // Check if the frequency is below 20
+            if ($record['value'] < 20) {
+                // Add the record to the filtered results array
+                $filteredResults[] = [
+                    'time' => $record['time'],
+                    'value' => $record['value'],
+                ];
+            }
         }
+
+        // for ($hour = 0; $hour < 24; $hour++) {
+        //     for ($minute = 0; $minute < 60; $minute += 30) {
+        //         // Set the specific hour and minute for the current iteration
+        //         $hourCarbon = $currentDate->copy()->setTime($hour, $minute, 0);
+
+        //         // Get the records for the current half hour
+        //         $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addMinutes(30)->subSecond()])
+        //             ->orderBy('created_at', 'desc')
+        //             ->first();
+
+        //         // If there are records for the current half hour and frequency is below 20, add them to the results array
+        //         if ($records && $records->frekuensi < 20) {
+        //             $results->push([
+        //                 'time' => $hourCarbon->format('d F Y H:i'),
+        //                 'value' => $records->frekuensi,
+        //             ]);
+        //         }
+        //     }
+        // }
+
+
+        // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
+        // $results[$hour]['value'] = $records->magnitude;
+
 
         // $results = collect($results);
         // Perform simple pagination on the $results collection

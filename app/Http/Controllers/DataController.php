@@ -18,6 +18,8 @@ class DataController extends Controller
             DB::table('monitorings')->insert([
                 'frekuensi' => $frekuensi,
                 'magnitude' => $magnitude,
+                'created_at' => now(), // Add the current timestamp
+                'updated_at' => now(),
             ]);
 
             // Return a success response

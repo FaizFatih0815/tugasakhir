@@ -43,6 +43,3 @@ Auth::routes();
 Route::get('/home', function () {
     return redirect()->route('login');
 });
-
-
-Route::post('/insert-data', 'App\Http\Controllers\DataController@insertData');

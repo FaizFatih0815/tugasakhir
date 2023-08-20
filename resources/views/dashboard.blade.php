@@ -91,5 +91,9 @@
 @stop
 
 @section('customscript')
-    <script></script>
+    <script>
+        setTimeout(function() {
+            location.reload();
+        }, 20000);
+    </script>
 @stop

@@ -37,7 +37,35 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{ $paginatedResults->links('pagination::custom') }}
+
+                        {{-- {{ $paginatedResults->links('pagination::custom') }} --}}
+                        {{ $paginatedResults->appends(['page-switch' => $paginatedResults_Switch->currentPage()])->links('pagination::custom') }}
+
+                        <div class="table-responsive card mb-3" style="background: #222831">
+                            <table class="table table-bordered mb-0">
+
+                                <thead>
+                                    <tr>
+                                        <th class="text-gray-100" scope="col">Date/Time</th>
+                                        <th class="text-gray-100" scope="col">Magnitude Switching</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($paginatedResults_Switch as $res_Switch)
+                                        <tr>
+                                            <th class="text-gray-100" scope="row">{{ $res_Switch['time_switch'] }}</th>
+                                            <td class="text-gray-100">{{ $res_Switch['value_switch'] }} V</td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {{-- {{ $paginatedResults_Switch->links('pagination::custom') }} --}}
+                        {{ $paginatedResults_Switch->appends(['page' => $paginatedResults->currentPage()])->links('pagination::custom') }}
+
                     </div>
                 </div>
             </div>

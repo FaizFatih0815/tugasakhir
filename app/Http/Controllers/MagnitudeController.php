@@ -10,68 +10,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class MagnitudeController extends Controller
 {
-    public function magnitude()
+    public function pagination($results, $page, $perPage)
     {
-        $currentDate = Carbon::today();
-
-        // Initialize an array to store the results
-        $results = collect();
-
-        // Loop through each hour from 00:00 to 23:00
-        // for ($hour = 0; $hour < 24; $hour++) {
-        //     // Set the specific hour and minute for the current iteration
-        //     $hourCarbon = $currentDate->copy()->setTime($hour, 0, 0);
-
-        //     // Get the records for the current hour
-        //     $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
-        //         ->orderBy('created_at', 'desc')
-        //         ->first();
-
-        //     // If there are records for the current hour, add them to the results array
-        //     $results->push([
-        //         'time' => $hourCarbon->format('d F Y H:i'),
-        //         'value' => $records->magnitude ?? 0,
-        //     ]);
-        foreach ($results as $record) {
-            // Check if the frequency is below 20
-            if ($record['value'] < 20) {
-                // Add the record to the filtered results array
-                $filteredResults[] = [
-                    'time' => $record['time'],
-                    'value' => $record['value'],
-                ];
-            }
-        }
-
-        // for ($hour = 0; $hour < 24; $hour++) {
-        //     for ($minute = 0; $minute < 60; $minute += 30) {
-        //         // Set the specific hour and minute for the current iteration
-        //         $hourCarbon = $currentDate->copy()->setTime($hour, $minute, 0);
-
-        //         // Get the records for the current half hour
-        //         $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addMinutes(30)->subSecond()])
-        //             ->orderBy('created_at', 'desc')
-        //             ->first();
-
-        //         // If there are records for the current half hour and frequency is below 20, add them to the results array
-        //         if ($records && $records->frekuensi < 20) {
-        //             $results->push([
-        //                 'time' => $hourCarbon->format('d F Y H:i'),
-        //                 'value' => $records->frekuensi,
-        //             ]);
-        //         }
-        //     }
-        // }
-
-
-        // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
-        // $results[$hour]['value'] = $records->magnitude;
-
-
-        // $results = collect($results);
-        // Perform simple pagination on the $results collection
-        $perPage = 6; // Number of items per page
-        $page = request()->get('page', 1); // Get the current page from the query string
         $paginatedResults = new \Illuminate\Pagination\LengthAwarePaginator(
             $results->forPage($page, $perPage),
             $results->count(),
@@ -80,12 +20,109 @@ class MagnitudeController extends Controller
             ['path' => request()->url()] // The URL for the pagination links
         );
 
-        // dd($paginatedResults);
+        return $paginatedResults;
+    }
 
+    public function magnitude()
+    {
+        $currentDate = Carbon::today();
+        $results = collect();
+
+        // Loop through each hour from 00:00 to 23:00
+        for ($hour = 0; $hour < 24; $hour++) {
+            // Set the specific hour and minute for the current iteration
+            $hourCarbon = $currentDate->copy()->setTime($hour, 0, 0);
+
+            // Get the records for the current hour
+            $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
+                ->orderBy('created_at', 'desc')
+                ->first();
+
+            // If there are records for the current hour, add them to the results array
+            $results->push([
+                'time' => $hourCarbon->format('d F Y H:i'),
+                'value' => $records->magnitude ?? 0,
+            ]);
+
+            // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
+            // $results[$hour]['value'] = $records->magnitude;
+        }
+
+        // $results = collect($results);
+        // Perform simple pagination on the $results collection
+        $perPage = 6; // Number of items per page
+        $page = request()->get('page', 1); // Get the current page from the query string
+        // $paginatedResults = new \Illuminate\Pagination\LengthAwarePaginator(
+        //     $results->forPage($page, $perPage),
+        //     $results->count(),
+        //     $perPage,
+        //     $page,
+        //     ['path' => request()->url()] // The URL for the pagination links
+        // );
+        $paginatedResults = $this->pagination(
+            $results,
+            $page,
+            $perPage,
+        );
+
+        // $paginatedResults->appends(['paginatedResults' => 'paginatedResults']);
+        $paginatedResults->withQueryString()->setPageName('page'); // Change 'page' to 'switch_page'
+
+        // Fetch records from the Monitoring model
+        $records = Monitoring::all(); // You need to fetch data from your database
+
+        // Initialize an array to store the filtered results
+        $filteredResults = [];
+
+        foreach ($records as $record) {
+            // Check if the magnitude value is below 20
+            if ($record->magnitude < 20) {
+                // Add the record to the filtered results array
+                $filteredResults[] = [
+                    'time_switch' => $record->created_at,
+                    'value_switch' => $record->magnitude,
+                ];
+            }
+        }
+
+        $perPageSwitch = 5; // Number of items per page
+        $pageSwitch = request()->get('page-switch', 1); // Get the current page from the query string
+        $filteredResults = collect($filteredResults);
+        // Perform pagination on the filtered results (Under 20)
+        // $paginatedResults_Switch = new \Illuminate\Pagination\LengthAwarePaginator(
+        //     collect($filteredResults)->forPage($pageSwitch, $perPageSwitch),
+        //     count($filteredResults),
+        //     $perPageSwitch,
+        //     $pageSwitch,
+        //     ['path' => request()->url()] // The URL for the pagination links
+        // );
+        $paginatedResults_Switch = $this->pagination(
+            $filteredResults,
+            $pageSwitch,
+            $perPageSwitch,
+        );
+
+        // $paginatedResults_Switch->appends(['paginatedResults_Switch' => 'paginatedResults_Switch']);
+        $paginatedResults_Switch->withQueryString()->setPageName('page-switch');
+
+        // Fetch maximum and minimum magnitudes for the current day
         $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('magnitude');
         $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('magnitude');
 
-        return view('magnitude', compact('paginatedResults', 'maximum', 'minimum'));
+        return view(
+            'magnitude',
+            compact(
+                'paginatedResults',
+                'paginatedResults_Switch',
+                'maximum',
+                'minimum'
+            )
+        );
+
+        // return view(view: 'magnitude')->with([
+        //     'paginatedResults' => paginatedResults::paginate(6, ['*'], 'paginatedResults'),
+        //     'paginatedResults_Switch' => paginatedResults_Switch::paginate(6, ['*'], 'paginatedResults_Switch'),
+        // ]);
     }
 
     public function export()

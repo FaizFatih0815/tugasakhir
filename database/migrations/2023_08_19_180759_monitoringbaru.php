@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('monitorings', function (Blueprint $table) {
-            $table->id();
-            $table->float('magnitude');
-            $table->integer('frekuensi');
-            // $table->timestamp('deleted_at')->nullable();
-            $table->timestamps();
+        Schema::table('monitorings', function (Blueprint $table) {
+
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('monitorings');
+        Schema::dropIfExists('monitoringbaru');
     }
 };

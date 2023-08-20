@@ -14,7 +14,36 @@
             <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Magnitude</h6>
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Magnitude/30 Mnt</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="ChartMagnitude_half"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frekuensi/30 Mnt</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="ChartFrequency_half"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Magnitude/Day</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -27,7 +56,7 @@
             <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frekuensi</h6>
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frekuensi/Day</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -86,15 +115,18 @@
 
         var labels = @json($labels);
         var max_magnitude = @json($max_magnitude);
-        var min_magnitude = @json($min_magnitude);
         var max_frekuensi = @json($max_frekuensi);
-        var min_frekuensi = @json($min_frekuensi);
+
+        var labels2 = @json($labels2);
+        var max_magnitude2 = @json($max_magnitude2);
+        var max_frekuensi2 = @json($max_frekuensi2);
+
         // Area Chart Example
-        var ctx = document.getElementById("ChartMagnitude");
+        var ctx = document.getElementById("ChartMagnitude_half");
         var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: labels2,
                 datasets: [{
                         label: "Nilai Magnitude Maximal",
                         lineTension: 0.3,
@@ -109,25 +141,9 @@
                         pointHoverBorderColor: "rgba(244, 209, 96, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        data: max_magnitude,
-                    },
-                    {
-                        label: "Nilai Magnitude Minimal",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(30, 40, 49, 0.05)",
-                        fill: false,
-                        borderColor: "rgba(87, 91, 96, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(87, 91, 96, 1)",
-                        pointBorderColor: "rgba(87, 91, 96, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
-                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: min_magnitude,
-
+                        data: max_magnitude2,
                     }
+
 
                 ],
             },
@@ -204,11 +220,11 @@
         });
 
         // Area Chart Example
-        var ctx = document.getElementById("ChartFrequency");
+        var ctx = document.getElementById("ChartFrequency_half");
         var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: labels,
+                labels: labels2,
                 datasets: [{
                         label: "Nilai Frekuensi Maksimal",
                         lineTension: 0.3,
@@ -223,23 +239,7 @@
                         pointHoverBorderColor: "rgba(244, 209, 96, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        data: max_frekuensi,
-                    },
-                    {
-                        label: "Nilai Frekuensi Minimal",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(46, 52, 21, 0.05)",
-                        fill: false,
-                        borderColor: "rgba(87, 91, 96, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(87, 91, 96, 1)",
-                        pointBorderColor: "rgba(87, 91, 96, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
-                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: min_frekuensi,
+                        data: max_frekuensi2,
                     }
 
                 ],
@@ -345,24 +345,8 @@
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
                         data: max_magnitude,
-                    },
-                    {
-                        label: "Nilai Magnitude Minimal",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(30, 40, 49, 0.05)",
-                        fill: false,
-                        borderColor: "rgba(87, 91, 96, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(87, 91, 96, 1)",
-                        pointBorderColor: "rgba(87, 91, 96, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
-                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: min_magnitude,
-
                     }
+
 
                 ],
             },
@@ -437,13 +421,14 @@
                 }
             }
         });
-        var ctx = document.getElementById("ChartMagnitude");
+
+        var ctx = document.getElementById("ChartFrequency");
         var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                        label: "Nilai Magnitude Maximal",
+                        label: "Nilai Frekuensi Maksimal",
                         lineTension: 0.3,
                         backgroundColor: "rgba(46, 52, 21, 0.05)",
                         fill: false,
@@ -456,24 +441,7 @@
                         pointHoverBorderColor: "rgba(244, 209, 96, 1)",
                         pointHitRadius: 10,
                         pointBorderWidth: 2,
-                        data: max_magnitude,
-                    },
-                    {
-                        label: "Nilai Magnitude Minimal",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(30, 40, 49, 0.05)",
-                        fill: false,
-                        borderColor: "rgba(87, 91, 96, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(87, 91, 96, 1)",
-                        pointBorderColor: "rgba(87, 91, 96, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
-                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: min_magnitude,
-
+                        data: max_frekuensi,
                     }
 
                 ],
@@ -501,7 +469,15 @@
                             maxTicksLimit: 7,
                             maxRotation: 45,
                             minRotation: 45,
-                        }
+                        },
+                        left: 100,
+                        right: 100,
+                        // grid: {
+                        //     padding: {
+                        //         left: 50,
+                        //         right: 50,
+                        //     }
+                        // }
                     }],
                     yAxes: [{
                         ticks: {
@@ -509,6 +485,7 @@
                             padding: 10,
                             maxRotation: 45,
                             minRotation: 45,
+
                         },
                         gridLines: {
                             color: "rgb(234, 236, 244)",
@@ -543,7 +520,7 @@
                     callbacks: {
                         label: function(tooltipItem, chart) {
                             var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' V';
+                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' Hz';
                         }
                     }
                 }

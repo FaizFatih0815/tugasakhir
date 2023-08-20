@@ -31,7 +31,7 @@ class FrequencyExport implements FromCollection
             // If there are records for the current hour, add them to the results array
             $results->push([
                 'time' => $hourCarbon->format('d F Y H:i'),
-                'value' => $records->frequency ?? 0,
+                'value' => $records->frekuensi ?? 0,
             ]);
 
             // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');

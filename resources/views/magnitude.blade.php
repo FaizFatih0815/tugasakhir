@@ -74,8 +74,7 @@
                 <p style="font-size:24px"> Data tersebut adalah data dari <b style="color:#FFD369">Nilai Magnitude</b> yang
                     masuk kedalam sistem tiap jam selama satu hari.
                     Untuk nilai magnitude tertinggi yang masuk hingga saat ini senilai <b
-                        style="color:#FFD369">{{ $maximum }} V</b>, dan nilai magnitude terendahnya senilai <b
-                        style="color:#FFD369">{{ $minimum }} V</b>.
+                        style="color:#FFD369">{{ $maximum }} V</b>.
                 </p>
 
                 <p style="font-size:24px">Silahkan klik button di bawah untuk mendownload data pada tabel di samping.

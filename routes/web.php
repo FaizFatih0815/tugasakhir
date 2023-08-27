@@ -36,7 +36,8 @@ Route::post('/admin/add/user', [App\Http\Controllers\AdminController::class, 'ad
 Route::post('/admin/{id}/deleteuser', [App\Http\Controllers\AdminController::class, 'deleteuser'])->name('admin.deleteuser');
 Route::get('/analytic1', [App\Http\Controllers\AnalyticController::class, 'analytic1'])->name('analytic1');
 Route::post('/insert-data', 'App\Http\Controllers\DataController@insertData');
-Route::get('/cekuser/{id}', 'App\Http\Controllers\UserController@getUserRole');
+Route::patch('/insert-data', 'App\Http\Controllers\DataController@insertData');
+// Route::get('/cekuser/{id}', 'App\Http\Controllers\UserController@getUserRole');
 
 Auth::routes();
 

@@ -22,18 +22,18 @@ class AnalyticController extends Controller
             $labels[] = Carbon::now()->subDays($i)->format('d M');
         }
         $max_magnitude = [];
-        $min_magnitude = [];
+        // $min_magnitude = [];
         $max_frekuensi = [];
-        $min_frekuensi = [];
+        // $min_frekuensi = [];
 
         foreach ($dates as $date) {
             $startDate = Carbon::createFromFormat('d/m/Y', $date)->startOfDay();
             $endDate = Carbon::createFromFormat('d/m/Y', $date)->endOfDay();
 
             $max_magnitude[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->max('magnitude');
-            $min_magnitude[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('magnitude');
+            // $min_magnitude[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('magnitude');
             $max_frekuensi[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->max('frekuensi');
-            $min_frekuensi[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('frekuensi');
+            // $min_frekuensi[] = Monitoring::whereBetween('created_at', [$startDate, $endDate])->min('frekuensi');
         }
 
 

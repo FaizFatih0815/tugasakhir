@@ -25,12 +25,12 @@ class FrequencyController extends Controller
             // Get the records for the current hour
             $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
                 ->orderBy('created_at', 'desc')
-                ->first();
+                ->avg('frekuensi');
 
             // If there are records for the current hour, add them to the results array
             $results->push([
                 'time' => $hourCarbon->format('d F Y H:i'),
-                'value' => $records->frekuensi ?? 0,
+                'value' => round($records, 1, PHP_ROUND_HALF_DOWN) ?? 0,
             ]);
 
             // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');

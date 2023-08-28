@@ -23,7 +23,7 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'dash
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'register'])->name('register');
 Route::get('/magnitude', [App\Http\Controllers\MagnitudeController::class, 'magnitude'])->name('magnitude');
-Route::get('/magnitude /export', [App\Http\Controllers\MagnitudeController::class, 'export'])->name('magnitude.export');
+Route::get('/magnitude/export', [App\Http\Controllers\MagnitudeController::class, 'export'])->name('magnitude.export');
 Route::get('/frequency', [App\Http\Controllers\FrequencyController::class, 'frequency'])->name('frequency');
 Route::get('/frequency /export', [App\Http\Controllers\FrequencyController::class, 'export'])->name('frequency.export');
 Route::get('/analytic', [App\Http\Controllers\AnalyticController::class, 'analytic'])->name('analytic');

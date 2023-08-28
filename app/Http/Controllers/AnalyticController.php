@@ -43,38 +43,44 @@ class AnalyticController extends Controller
         $temp_hour = 0;
         $temp_minute = 0;
 
-        if ($c_minute > 30) {
-            $temp_hour = $c_hour - 2;
-            $temp_minute = '30';
-            $c_hour += 1;
-        } else {
-            $temp_hour = $c_hour - 3;
+
+        if ($c_minute[0] == '0') {
+            // $temp_hour = $c_hour;
+            $temp_hour = '0' . $c_hour[1] - 1;
             $temp_minute = '00';
+        } else {
+            if ($c_hour[0] == '0') {
+                $temp_hour = '0' . $c_hour[1] - 1;
+            } else {
+                $temp_hour = strval($c_hour - 1);
+            }
+
+            $temp_minute = $c_minute - $c_minute[1];
+            $temp_minute = strval($temp_minute);
         }
 
         $labels2 = [];
         $max_magnitude2 = [];
         $max_frekuensi2 = [];
 
-        for ($i = $temp_hour; $i < $c_hour; $i++) {
-            $loopMinute = $temp_minute;
+        for ($x = 0; $x < 6; $x++) {
+            $plusTenMinutes = $temp_minute == '00' ? '10' : strval($temp_minute + 10);
 
-            for ($x = 0; $x < 2; $x++) {
-                $e_hour = $loopMinute == '30' ? $i + 1 : $i;
-                $e_minute = $loopMinute == '00' ? '30' : '00';
+            $startTime = Carbon::createFromFormat('H:i:s',  $temp_hour . ':' . $temp_minute . ':' . '00');
+            $endTime = Carbon::createFromFormat('H:i:s',  $temp_hour . ':' . $plusTenMinutes . ':' . '00');
 
-                $startTime = Carbon::createFromFormat('H:i:s',  $i . ':' . $loopMinute . ':' . '00');
-                $endTime = Carbon::createFromFormat('H:i:s',  $e_hour . ':' . $e_minute . ':' . '00');
+            $labels2[] = (string)$startTime->format('H:i:s');
+            $max_magnitude2[] = Monitoring::whereBetween('created_at', [$startTime, $endTime])->avg('magnitude');
+            $max_frekuensi2[] = Monitoring::whereBetween('created_at', [$startTime, $endTime])->avg('frekuensi');
 
-                $labels2[] = (string)$startTime->format('H:i:s');;
-                $max_magnitude2[] = Monitoring::whereBetween('created_at', [$startTime, $endTime])->max('magnitude');
-                $max_frekuensi2[] = Monitoring::whereBetween('created_at', [$startTime, $endTime])->max('frekuensi');
-
-                if ($loopMinute == '30') {
-                    $loopMinute = '00';
-                    continue;
+            if ($temp_minute < 50) {
+                $temp_minute = $temp_minute == '00' ? strval($temp_minute[1] + 10) : strval($temp_minute + 10);
+            } else {
+                $temp_minute = '00';
+                if ($temp_hour[0] == '0') {
+                    $temp_hour = '0' . $temp_hour[1] + 1;
                 } else {
-                    $loopMinute = '30';
+                    $temp_hour = strval($temp_hour + 1);
                 }
             }
         }

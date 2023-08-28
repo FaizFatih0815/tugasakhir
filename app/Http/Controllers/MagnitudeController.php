@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\MagnitudeExport;
 use App\Models\Monitoring;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MagnitudeExport;
 
 class MagnitudeController extends Controller
 {
@@ -36,12 +36,12 @@ class MagnitudeController extends Controller
             // Get the records for the current hour
             $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
                 ->orderBy('created_at', 'desc')
-                ->first();
+                ->avg('magnitude');
 
             // If there are records for the current hour, add them to the results array
             $results->push([
                 'time' => $hourCarbon->format('d F Y H:i'),
-                'value' => $records->magnitude ?? 0,
+                'value' => round($records, 1, PHP_ROUND_HALF_DOWN) ?? 0,
             ]);
 
             // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
@@ -69,7 +69,7 @@ class MagnitudeController extends Controller
         $paginatedResults->withQueryString()->setPageName('page'); // Change 'page' to 'switch_page'
 
         // Fetch records from the Monitoring model
-        $records = Monitoring::all(); // You need to fetch data from your database
+        $records = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->get(); // You need to fetch data from your database
 
         // Initialize an array to store the filtered results
         $filteredResults = [];
@@ -127,6 +127,14 @@ class MagnitudeController extends Controller
 
     public function export()
     {
-        return Excel::download(new MagnitudeExport, 'Magnitude.xlsx');
+        return Excel::download(new MagnitudeExport(2018), 'Magnitude.xlsx');
     }
+
+    // public function sheets(): array
+    // {
+    //     return [
+    //         'Magnitude Average' => new MagnitudeAverageExport(),
+    //         'Magnitude Switching' => new MagnitudeSwitchingExport(),
+    //     ];
+    // }
 }

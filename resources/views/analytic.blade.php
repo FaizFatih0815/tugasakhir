@@ -14,7 +14,7 @@
             <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Magnitude/30 Mnt</h6>
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Magnitude</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -27,7 +27,7 @@
             <div class="col-6">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frekuensi/30 Mnt</h6>
+                        <h6 class="m-0 font-weight-bold" style="color:#222831">Chart Frequency</h6>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -38,7 +38,7 @@
             </div>
 
         </div>
-        <div class="row">
+        {{-- <div class="row">
 
             <div class="col-6">
                 <div class="card shadow mb-4">
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
     </div>
 
 
@@ -128,7 +128,7 @@
             data: {
                 labels: labels2,
                 datasets: [{
-                        label: "Nilai Magnitude Maximal",
+                        label: "Rata-Rata Nilai Magnitude",
                         lineTension: 0.3,
                         backgroundColor: "rgba(46, 52, 21, 0.05)",
                         fill: false,
@@ -226,7 +226,7 @@
             data: {
                 labels: labels2,
                 datasets: [{
-                        label: "Nilai Frekuensi Maksimal",
+                        label: "Rata-Rata Nilai Frekuensi",
                         lineTension: 0.3,
                         backgroundColor: "rgba(46, 52, 21, 0.05)",
                         fill: false,
@@ -325,206 +325,206 @@
             }
         });
 
-        var ctx = document.getElementById("ChartMagnitude");
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                        label: "Nilai Magnitude Maximal",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(46, 52, 21, 0.05)",
-                        fill: false,
-                        borderColor: "rgba(30, 40, 49, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(30, 40, 49, 1)",
-                        pointBorderColor: "rgba(30, 40, 49, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
-                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: max_magnitude,
-                    }
+        // var ctx = document.getElementById("ChartMagnitude");
+        // var myLineChart = new Chart(ctx, {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels,
+        //         datasets: [{
+        //                 label: "Nilai Magnitude Maximal",
+        //                 lineTension: 0.3,
+        //                 backgroundColor: "rgba(46, 52, 21, 0.05)",
+        //                 fill: false,
+        //                 borderColor: "rgba(30, 40, 49, 1)",
+        //                 pointRadius: 3,
+        //                 pointBackgroundColor: "rgba(30, 40, 49, 1)",
+        //                 pointBorderColor: "rgba(30, 40, 49, 1)",
+        //                 pointHoverRadius: 3,
+        //                 pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
+        //                 pointHoverBorderColor: "rgba(244, 209, 96, 1)",
+        //                 pointHitRadius: 10,
+        //                 pointBorderWidth: 2,
+        //                 data: max_magnitude,
+        //             }
 
 
-                ],
-            },
-            options: {
-                maintainAspectRatio: false,
-                layout: {
-                    padding: {
-                        left: 10,
-                        right: 25,
-                        top: 25,
-                        bottom: 0
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        time: {
-                            unit: 'date'
-                        },
-                        gridLines: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 7,
-                            maxRotation: 45,
-                            minRotation: 45,
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            maxTicksLimit: 5,
-                            padding: 10,
-                            maxRotation: 45,
-                            minRotation: 45,
-                        },
-                        gridLines: {
-                            color: "rgb(234, 236, 244)",
-                            zeroLineColor: "rgb(234, 236, 244)",
-                            drawBorder: false,
-                            borderDash: [2],
-                            zeroLineBorderDash: [2]
-                        }
-                    }],
-                },
-                legend: {
-                    display: true,
-                    position: 'bottom',
-                    lables: {
-                        fontColor: 'rgb(255, 99, 132)'
-                    }
-                },
-                tooltips: {
-                    backgroundColor: "rgb(255,255,255)",
-                    bodyFontColor: "#858796",
-                    titleMarginBottom: 10,
-                    titleFontColor: '#6e707e',
-                    titleFontSize: 14,
-                    borderColor: '#dddfeb',
-                    borderWidth: 1,
-                    xPadding: 15,
-                    yPadding: 15,
-                    displayColors: false,
-                    intersect: false,
-                    mode: 'index',
-                    caretPadding: 10,
-                    callbacks: {
-                        label: function(tooltipItem, chart) {
-                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' V';
-                        }
-                    }
-                }
-            }
-        });
+        //         ],
+        //     },
+        //     options: {
+        //         maintainAspectRatio: false,
+        //         layout: {
+        //             padding: {
+        //                 left: 10,
+        //                 right: 25,
+        //                 top: 25,
+        //                 bottom: 0
+        //             }
+        //         },
+        //         scales: {
+        //             xAxes: [{
+        //                 time: {
+        //                     unit: 'date'
+        //                 },
+        //                 gridLines: {
+        //                     display: false,
+        //                     drawBorder: false
+        //                 },
+        //                 ticks: {
+        //                     maxTicksLimit: 7,
+        //                     maxRotation: 45,
+        //                     minRotation: 45,
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     maxTicksLimit: 5,
+        //                     padding: 10,
+        //                     maxRotation: 45,
+        //                     minRotation: 45,
+        //                 },
+        //                 gridLines: {
+        //                     color: "rgb(234, 236, 244)",
+        //                     zeroLineColor: "rgb(234, 236, 244)",
+        //                     drawBorder: false,
+        //                     borderDash: [2],
+        //                     zeroLineBorderDash: [2]
+        //                 }
+        //             }],
+        //         },
+        //         legend: {
+        //             display: true,
+        //             position: 'bottom',
+        //             lables: {
+        //                 fontColor: 'rgb(255, 99, 132)'
+        //             }
+        //         },
+        //         tooltips: {
+        //             backgroundColor: "rgb(255,255,255)",
+        //             bodyFontColor: "#858796",
+        //             titleMarginBottom: 10,
+        //             titleFontColor: '#6e707e',
+        //             titleFontSize: 14,
+        //             borderColor: '#dddfeb',
+        //             borderWidth: 1,
+        //             xPadding: 15,
+        //             yPadding: 15,
+        //             displayColors: false,
+        //             intersect: false,
+        //             mode: 'index',
+        //             caretPadding: 10,
+        //             callbacks: {
+        //                 label: function(tooltipItem, chart) {
+        //                     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+        //                     return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' V';
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
 
-        var ctx = document.getElementById("ChartFrequency");
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                        label: "Nilai Frekuensi Maksimal",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(46, 52, 21, 0.05)",
-                        fill: false,
-                        borderColor: "rgba(30, 40, 49, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(30, 40, 49, 1)",
-                        pointBorderColor: "rgba(30, 40, 49, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
-                        pointHoverBorderColor: "rgba(244, 209, 96, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: max_frekuensi,
-                    }
+        // var ctx = document.getElementById("ChartFrequency");
+        // var myLineChart = new Chart(ctx, {
+        //     type: 'line',
+        //     data: {
+        //         labels: labels,
+        //         datasets: [{
+        //                 label: "Nilai Frekuensi Maksimal",
+        //                 lineTension: 0.3,
+        //                 backgroundColor: "rgba(46, 52, 21, 0.05)",
+        //                 fill: false,
+        //                 borderColor: "rgba(30, 40, 49, 1)",
+        //                 pointRadius: 3,
+        //                 pointBackgroundColor: "rgba(30, 40, 49, 1)",
+        //                 pointBorderColor: "rgba(30, 40, 49, 1)",
+        //                 pointHoverRadius: 3,
+        //                 pointHoverBackgroundColor: "rgba(244, 209, 96, 1)",
+        //                 pointHoverBorderColor: "rgba(244, 209, 96, 1)",
+        //                 pointHitRadius: 10,
+        //                 pointBorderWidth: 2,
+        //                 data: max_frekuensi,
+        //             }
 
-                ],
-            },
-            options: {
-                maintainAspectRatio: false,
-                layout: {
-                    padding: {
-                        left: 10,
-                        right: 25,
-                        top: 25,
-                        bottom: 0
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        time: {
-                            unit: 'date'
-                        },
-                        gridLines: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 7,
-                            maxRotation: 45,
-                            minRotation: 45,
-                        },
-                        left: 100,
-                        right: 100,
-                        // grid: {
-                        //     padding: {
-                        //         left: 50,
-                        //         right: 50,
-                        //     }
-                        // }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            maxTicksLimit: 5,
-                            padding: 10,
-                            maxRotation: 45,
-                            minRotation: 45,
+        //         ],
+        //     },
+        //     options: {
+        //         maintainAspectRatio: false,
+        //         layout: {
+        //             padding: {
+        //                 left: 10,
+        //                 right: 25,
+        //                 top: 25,
+        //                 bottom: 0
+        //             }
+        //         },
+        //         scales: {
+        //             xAxes: [{
+        //                 time: {
+        //                     unit: 'date'
+        //                 },
+        //                 gridLines: {
+        //                     display: false,
+        //                     drawBorder: false
+        //                 },
+        //                 ticks: {
+        //                     maxTicksLimit: 7,
+        //                     maxRotation: 45,
+        //                     minRotation: 45,
+        //                 },
+        //                 left: 100,
+        //                 right: 100,
+        //                 // grid: {
+        //                 //     padding: {
+        //                 //         left: 50,
+        //                 //         right: 50,
+        //                 //     }
+        //                 // }
+        //             }],
+        //             yAxes: [{
+        //                 ticks: {
+        //                     maxTicksLimit: 5,
+        //                     padding: 10,
+        //                     maxRotation: 45,
+        //                     minRotation: 45,
 
-                        },
-                        gridLines: {
-                            color: "rgb(234, 236, 244)",
-                            zeroLineColor: "rgb(234, 236, 244)",
-                            drawBorder: false,
-                            borderDash: [2],
-                            zeroLineBorderDash: [2]
-                        }
-                    }],
-                },
-                legend: {
-                    display: true,
-                    position: 'bottom',
-                    lables: {
-                        fontColor: 'rgb(255, 99, 132)'
-                    }
-                },
-                tooltips: {
-                    backgroundColor: "rgb(255,255,255)",
-                    bodyFontColor: "#858796",
-                    titleMarginBottom: 10,
-                    titleFontColor: '#6e707e',
-                    titleFontSize: 14,
-                    borderColor: '#dddfeb',
-                    borderWidth: 1,
-                    xPadding: 15,
-                    yPadding: 15,
-                    displayColors: false,
-                    intersect: false,
-                    mode: 'index',
-                    caretPadding: 10,
-                    callbacks: {
-                        label: function(tooltipItem, chart) {
-                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' Hz';
-                        }
-                    }
-                }
-            }
-        });
+        //                 },
+        //                 gridLines: {
+        //                     color: "rgb(234, 236, 244)",
+        //                     zeroLineColor: "rgb(234, 236, 244)",
+        //                     drawBorder: false,
+        //                     borderDash: [2],
+        //                     zeroLineBorderDash: [2]
+        //                 }
+        //             }],
+        //         },
+        //         legend: {
+        //             display: true,
+        //             position: 'bottom',
+        //             lables: {
+        //                 fontColor: 'rgb(255, 99, 132)'
+        //             }
+        //         },
+        //         tooltips: {
+        //             backgroundColor: "rgb(255,255,255)",
+        //             bodyFontColor: "#858796",
+        //             titleMarginBottom: 10,
+        //             titleFontColor: '#6e707e',
+        //             titleFontSize: 14,
+        //             borderColor: '#dddfeb',
+        //             borderWidth: 1,
+        //             xPadding: 15,
+        //             yPadding: 15,
+        //             displayColors: false,
+        //             intersect: false,
+        //             mode: 'index',
+        //             caretPadding: 10,
+        //             callbacks: {
+        //                 label: function(tooltipItem, chart) {
+        //                     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+        //                     return datasetLabel + ' : ' + number_format(tooltipItem.yLabel) + ' Hz';
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
     </script>
 @stop

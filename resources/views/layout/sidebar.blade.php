@@ -29,6 +29,14 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('analytic') }}">
+                    <i class="fas fa-solid fa-chart-line" style="color:#EEEEEE; font-size:15px"></i>
+                    <span style="color:#EEEEEE; font-size:15px">Analytic</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('magnitude') }}">
                     <i class="fas fa-solid fa-bolt" style="color:#EEEEEE; font-size:15px"></i>
                     <span style="color:#EEEEEE; font-size:15px">Magnitude</span>
@@ -39,15 +47,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('frequency') }}">
                     <i class="fas fa-solid fa-wave-square" style="color:#EEEEEE; font-size:15px"></i>
-                    <span style="color:#EEEEEE; font-size:15px">Frekuensi</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('analytic') }}">
-                    <i class="fas fa-solid fa-chart-line" style="color:#EEEEEE; font-size:15px"></i>
-                    <span style="color:#EEEEEE; font-size:15px">Analytic</span>
+                    <span style="color:#EEEEEE; font-size:15px">Frequency</span>
                 </a>
             </li>
 

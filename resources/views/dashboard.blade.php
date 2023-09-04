@@ -94,6 +94,6 @@
     <script>
         setTimeout(function() {
             location.reload();
-        }, 20000);
+        }, 5000);
     </script>
 @stop

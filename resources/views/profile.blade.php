@@ -78,8 +78,8 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-
                                 @endif
+
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="text" name="name" class="form-control form-control-user"
@@ -132,8 +132,8 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         /*  ==========================================
-                                                                                                                                                                                                                                                                                    SHOW UPLOADED IMAGE
-                                                                                                                                                                                                                                                                                    * ========================================== */
+                                                                                                                                                                                                                                                                                        SHOW UPLOADED IMAGE
+                                                                                                                                                                                                                                                                                        * ========================================== */
         function readURL(input, info, result) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

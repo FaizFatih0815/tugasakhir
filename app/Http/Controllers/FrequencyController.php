@@ -32,13 +32,8 @@ class FrequencyController extends Controller
                 'time' => $hourCarbon->format('d F Y H:i'),
                 'value' => round($records, 1, PHP_ROUND_HALF_DOWN) ?? 0,
             ]);
-
-            // $results[$hour]['time'] = $hourCarbon->format('d F Y H:i');
-            // $results[$hour]['value'] = $records->magnitude;
         }
 
-        // $results = collect($results);
-        // Perform simple pagination on the $results collection
         $perPage = 6; // Number of items per page
         $page = request()->get('page', 1); // Get the current page from the query string
         $paginatedResults = new \Illuminate\Pagination\LengthAwarePaginator(
@@ -51,10 +46,7 @@ class FrequencyController extends Controller
 
         // dd($paginatedResults);
 
-        $maximum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->max('frekuensi');
-        $minimum = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->min('frekuensi');
-
-        return view('frequency', compact('paginatedResults', 'maximum', 'minimum'));
+        return view('frequency', compact('paginatedResults'));
     }
 
     public function export()

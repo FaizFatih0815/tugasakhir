@@ -73,8 +73,6 @@
             <div class="col-6 px-4" style="margin-top: 65px; color:#EEEEEE; text-align:justify">
                 <p style="font-size:24px"> Data tersebut adalah data dari <b style="color:#FFD369">Rata-Rata Nilai
                         Magnitude</b> yang masuk kedalam sistem tiap jam selama satu hari.
-                    {{-- Untuk nilai magnitude tertinggi yang masuk hingga saat ini senilai <b
-                        style="color:#FFD369">{{ $maximum }} V</b>. --}}
                 </p>
 
                 <p style="font-size:24px">Silahkan klik button di bawah untuk mendownload data pada tabel di samping.

@@ -40,7 +40,6 @@
 
     <div class="container">
 
-
         <div class="row justify-content-center align-items-center">
 
             <div class="col-8" style="margin-top:7%">
@@ -86,10 +85,6 @@
                     <div class="text-center">
                         <a class="text-gray-100 small" href="{{ route('forgotpassword') }}">Forgot Password?</a>
                     </div>
-
-                    {{-- <div class="text-center">
-                        <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
-                    </div> --}}
 
                 </div>
             </div>

@@ -132,8 +132,8 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         /*  ==========================================
-                                                                                                                                                                                                                                                                                        SHOW UPLOADED IMAGE
-                                                                                                                                                                                                                                                                                        * ========================================== */
+                                                                                                                                                                                                                                                                                                    SHOW UPLOADED IMAGE
+                                                                                                                                                                                                                                                                                                    * ========================================== */
         function readURL(input, info, result) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

@@ -3,12 +3,6 @@
 @section('content')
     <div class="container-fluid;">
 
-        {{-- <img class="{{ route('DashboardPhoto.png') }}"> --}}
-        <!-- Page Heading -->
-        {{-- <div class="d-sm-flex align-items-center mb-4" style="margin-left:24%; margin-top: 2%">
-            
-        </div> --}}
-
         <div class="row">
 
             <div class="col-6 text-center">
@@ -54,18 +48,18 @@
                             </div>
                         </div>
                     </div>
-                    {{-- #455847 #AACB73 --}}
+
                     <div class="card shadow h-100 py-4"
-                        style="border-left:11px solid @if ($magnitude >= 150) #455847 @else #ae0000 @endif; background-color:@if ($magnitude >= 150) #AACB73  @else #D71313 @endif">
+                        style="border-left:11px solid @if ($magnitude >= 220) #455847 @else #ae0000 @endif; background-color:@if ($magnitude >= 220) #AACB73  @else #D71313 @endif">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-s text-uppercase mb-1"
-                                        style="font-weight:800 !important; color: @if ($magnitude >= 150) #455847 @else #ffffff @endif">
+                                        style="font-weight:800 !important; color: @if ($magnitude >= 220) #455847 @else #ffffff @endif">
                                         STATUS</div>
                                     <div class="h5 mb-0"
-                                        style="font-weight:600 !important; color: @if ($magnitude >= 150) #455847 @else #ffffff @endif">
-                                        @if ($magnitude >= 150)
+                                        style="font-weight:600 !important; color: @if ($magnitude >= 220) #455847 @else #ffffff @endif">
+                                        @if ($magnitude >= 220)
                                             Aman
                                         @else
                                             Tidak Aman
@@ -75,13 +69,13 @@
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-solid fa-check fa-2x"
-                                        style="color:@if ($magnitude >= 150) #9EBC64  @else #ae0000 @endif"></i>
+                                        style="color:@if ($magnitude >= 220) #9EBC64  @else #ae0000 @endif"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- End of Content Wrapper -->
+
                 </div>
             </div>
 

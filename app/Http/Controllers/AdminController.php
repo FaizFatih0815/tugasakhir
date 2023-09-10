@@ -10,11 +10,15 @@ class AdminController extends Controller
 {
     public function admin()
     {
+        //Melakukan paginasi untuk data pengguna
         $users = User::paginate(6);
         return view('admin', compact('users'));
     }
+
+    //Membuat public function untuk perubahan pengguna
     public function updateuser($id, Request $request)
     {
+        // Memvalidasi bahwa nama, email, dan role harus diisi
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -25,6 +29,7 @@ class AdminController extends Controller
             'role.required' => 'Role harus diisi'
         ]);
 
+        //Melakukan perubahan pengguna
         $user = User::find($id);
         $user->update([
             'name' => $request->name,
@@ -33,8 +38,11 @@ class AdminController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
+
+    //Membuat public function untuk menambahkan pengguna
     public function adduser(Request $request)
     {
+        // Memvalidasi bahwa nama, email, role dan password harus diisi
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -47,6 +55,7 @@ class AdminController extends Controller
             'password.required' => 'Password harus diisi'
         ]);
 
+        //Melakukan penambahan pengguna
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -55,8 +64,11 @@ class AdminController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambah');
     }
+
+    //Membuat public function untuk menghapus pengguna
     public function deleteuser($id)
     {
+        //Mencari id pengguna untuk dihapus
         User::find($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }

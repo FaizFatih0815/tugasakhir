@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->float('magnitude');
             $table->integer('frekuensi');
-            // $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

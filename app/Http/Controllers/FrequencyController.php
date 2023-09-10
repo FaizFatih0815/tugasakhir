@@ -14,37 +14,35 @@ class FrequencyController extends Controller
     {
         $currentDate = Carbon::today();
 
-        // Initialize an array to store the results
+        // Menginisiasi array results
         $results = collect();
 
-        // Loop through each hour from 00:00 to 23:00
+        // Melakukan looping dari jam 00.00 sampai 23.00
         for ($hour = 0; $hour < 24; $hour++) {
-            // Set the specific hour and minute for the current iteration
+            // Mengatur jam dan menit
             $hourCarbon = $currentDate->copy()->setTime($hour, 0, 0);
 
-            // Get the records for the current hour
+            // Mengambil data nilai rata rata frekuensi
             $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
                 ->orderBy('created_at', 'desc')
                 ->avg('frekuensi');
 
-            // If there are records for the current hour, add them to the results array
+            // Menambahkan data pada results
             $results->push([
                 'time' => $hourCarbon->format('d F Y H:i'),
                 'value' => round($records, 1, PHP_ROUND_HALF_DOWN) ?? 0,
             ]);
         }
 
-        $perPage = 6; // Number of items per page
-        $page = request()->get('page', 1); // Get the current page from the query string
+        $perPage = 6; // Jumlah halaman paginasi
+        $page = request()->get('page', 1); // Menampilkan halaman pertama
         $paginatedResults = new \Illuminate\Pagination\LengthAwarePaginator(
             $results->forPage($page, $perPage),
             $results->count(),
             $perPage,
             $page,
-            ['path' => request()->url()] // The URL for the pagination links
+            ['path' => request()->url()] // URL link paginasi
         );
-
-        // dd($paginatedResults);
 
         return view('frequency', compact('paginatedResults'));
     }

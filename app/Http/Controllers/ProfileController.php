@@ -16,6 +16,7 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request)
     {
+        //Meminta data dan memvalidasi nama dan email
         $request->validate([
             'name' => 'required',
             'email' => 'required|email'
@@ -23,8 +24,10 @@ class ProfileController extends Controller
             'name.required' => 'Nama harus diisi',
             'email.required' => 'Email harus diisi'
         ]);
+
         try {
             $profile = User::find(auth()->user()->id);
+
             if ($profile) {
                 $filepath = $profile->foto;
                 $foto = "";
@@ -37,6 +40,8 @@ class ProfileController extends Controller
                 } else {
                     $foto = $profile->foto;
                 }
+
+                //Mengupdate nama, email, dan foto pada profile
                 $profile->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -44,7 +49,6 @@ class ProfileController extends Controller
 
                 ]);
             }
-
             return redirect()->back()->with('success', 'Berhasil mengubah profil');
         } catch (Exception $e) {
 

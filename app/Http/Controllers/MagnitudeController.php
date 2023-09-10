@@ -10,62 +10,50 @@ use App\Exports\MagnitudeExport;
 
 class MagnitudeController extends Controller
 {
-    public function pagination($results, $page, $perPage)
-    {
-        $paginatedResults = new \Illuminate\Pagination\LengthAwarePaginator(
-            $results->forPage($page, $perPage),
-            $results->count(),
-            $perPage,
-            $page,
-            ['path' => request()->url()] // The URL for the pagination links
-        );
-
-        return $paginatedResults;
-    }
-
     public function magnitude()
     {
         $currentDate = Carbon::today();
+
+        // Menginisiasi array results
         $results = collect();
 
-        // Loop through each hour from 00:00 to 23:00
+        // Melakukan looping dari jam 00.00 sampai 23.00
         for ($hour = 0; $hour < 24; $hour++) {
-            // Set the specific hour and minute for the current iteration
+            // Mengatur jam dan menit
             $hourCarbon = $currentDate->copy()->setTime($hour, 0, 0);
 
-            // Get the records for the current hour
+            // Mengambil data nilai rata rata magnitude
             $records = Monitoring::whereBetween('created_at', [$hourCarbon, $hourCarbon->copy()->addHour()->subMinute()])
                 ->orderBy('created_at', 'desc')
                 ->avg('magnitude');
 
-            // If there are records for the current hour, add them to the results array
+            // Menambahkan data pada results
             $results->push([
                 'time' => $hourCarbon->format('d F Y H:i'),
                 'value' => round($records, 1, PHP_ROUND_HALF_DOWN) ?? 0,
             ]);
         }
 
-
-        $perPage = 6; // Number of items per page
-        $page = request()->get('page', 1); // Get the current page from the query string
+        $perPage = 6; // Jumlah halaman paginasi
+        $page = request()->get('page', 1); // Menapilkan halaman pertama
         $paginatedResults = $this->pagination(
             $results,
             $page,
             $perPage,
         );
 
-        $paginatedResults->withQueryString()->setPageName('page'); // Change 'page' to 'switch_page'
+        $paginatedResults->withQueryString()->setPageName('page'); // Menentukan nama page
 
-        // Fetch records from the Monitoring model
-        $records = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->get(); // You need to fetch data from your database
+        // Mengambil data pada tabel monitoring
+        $records = Monitoring::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->get();
 
-        // Initialize an array to store the filtered results
+        // Menginisiasi array filteredresults
         $filteredResults = [];
 
         foreach ($records as $record) {
-            // Check if the magnitude value is below 20
-            if ($record->magnitude < 20) {
-                // Add the record to the filtered results array
+            // Pendataan nilai magnitude dibawah 220
+            if ($record->magnitude < 220) {
+                // Memasukkan data kedalam filteredresults
                 $filteredResults[] = [
                     'time_switch' => $record->created_at,
                     'value_switch' => $record->magnitude,
@@ -73,8 +61,8 @@ class MagnitudeController extends Controller
             }
         }
 
-        $perPageSwitch = 5; // Number of items per page
-        $pageSwitch = request()->get('page-switch', 1); // Get the current page from the query string
+        $perPageSwitch = 5; // Jumlah halaman paginasi
+        $pageSwitch = request()->get('page-switch', 1); // Menampilkan halaman pertama
         $filteredResults = collect($filteredResults);
 
         $paginatedResults_Switch = $this->pagination(
@@ -93,6 +81,20 @@ class MagnitudeController extends Controller
             )
         );
     }
+
+    public function pagination($results, $page, $perPage)
+    {
+        $paginatedResults = new \Illuminate\Pagination\LengthAwarePaginator(
+            $results->forPage($page, $perPage),
+            $results->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url()] // The URL for the pagination links
+        );
+
+        return $paginatedResults;
+    }
+
 
     public function export()
     {

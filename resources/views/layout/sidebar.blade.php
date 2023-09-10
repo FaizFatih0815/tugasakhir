@@ -27,7 +27,7 @@
                 <span style="font-size:15px"> Our Fitur </span>
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Analytic -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('analytic') }}">
                     <i class="fas fa-solid fa-chart-line" style="color:#EEEEEE; font-size:15px"></i>
@@ -35,7 +35,7 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Magnitude -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('magnitude') }}">
                     <i class="fas fa-solid fa-bolt" style="color:#EEEEEE; font-size:15px"></i>
@@ -43,7 +43,7 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Pages Frequency -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('frequency') }}">
                     <i class="fas fa-solid fa-wave-square" style="color:#EEEEEE; font-size:15px"></i>
@@ -51,7 +51,7 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages User -->
             @if (auth()->user()->role == 'admin')
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{ route('admin') }}">

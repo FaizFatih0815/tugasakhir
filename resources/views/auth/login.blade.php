@@ -50,7 +50,7 @@
                         <div class="text-center mb-3">
                             <img src="{{ asset('img/LogoUndip.png') }}" width="200" height="200">
                             <h1 class="font-weight-bold mb-0 text-gray-100">WEBSITE MONITORING</h1>
-                            <h1 class="font-weight-bold mb-0 text-gray-100">TUGAS AKHIR</h1>
+                            <h1 class="font-weight-bold mb-0 text-gray-100">SISTEM ATS</h1>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">

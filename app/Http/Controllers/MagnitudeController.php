@@ -89,12 +89,11 @@ class MagnitudeController extends Controller
             $results->count(),
             $perPage,
             $page,
-            ['path' => request()->url()] // The URL for the pagination links
+            ['path' => request()->url()] // URL link paginasi
         );
 
         return $paginatedResults;
     }
-
 
     public function export()
     {

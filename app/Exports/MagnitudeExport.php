@@ -25,6 +25,7 @@ class MagnitudeExport implements WithMultipleSheets
     public function sheets(): array
     {
         return [
+            //Memanggil data untuk di export
             'Magnitude Average' => new MagnitudeAverageExport(),
             'Magnitude Switching' => new MagnitudeSwitchingExport(),
         ];

@@ -40,6 +40,7 @@ class MagnitudeAverageExport implements FromCollection, WithTitle
         return $results;
     }
 
+    // Mendeklarasikan hasil results menjadi Magnitude Average
     public function title(): string
     {
         return 'Magnitude Average';

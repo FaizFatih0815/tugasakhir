@@ -74,9 +74,7 @@
                                 </button>
                             </form>
                             <hr>
-                            {{-- <div class="text-center">
-                                <a class="text-gray-100 small" href="{{ route('register') }}">Create an Account!</a>
-                            </div> --}}
+
                             <div class="text-center">
                                 <a class="text-gray-100 small" href="{{ route('login') }}">Already have an account?
                                     Login!</a>

@@ -46,7 +46,7 @@
                         <div class="text-center mb-3" style="margin-top: 12%">
                             <img src="{{ asset('img/LogoUndip.png') }}" width="200" height="200">
                             <h1 class="font-weight-bold mb-0 text-gray-100">WEBSITE MONITORING</h1>
-                            <h1 class="font-weight-bold mb-0 text-gray-100">TUGAS AKHIR</h1>
+                            <h1 class="font-weight-bold mb-0 text-gray-100">SISTEM ATS</h1>
 
 
                             <div class="form-group" style="max-width: 100 px;">
